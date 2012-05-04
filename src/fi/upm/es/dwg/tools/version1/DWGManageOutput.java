@@ -13,7 +13,7 @@ public class DWGManageOutput implements DWGManageOutputInterface {
 		Formatter formatter = new Formatter(sb);  
 		for (byte b : bytes)
 		{  
-			formatter.format("%02x", b);  
+			formatter.format("%02x",b);  
 		}  
 		
 		return sb.toString();  
