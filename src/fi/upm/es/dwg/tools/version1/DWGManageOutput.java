@@ -3,11 +3,9 @@ package fi.upm.es.dwg.tools.version1;
 import java.lang.StringBuilder;
 import java.util.Formatter;
 
-import fi.upm.es.dwg.tools.interfaces.DWGManageOutputInterface;
-
-public class DWGManageOutput implements DWGManageOutputInterface {
+public class DWGManageOutput {
 	
-	public String bytesToHexString(byte[] bytes)
+	public static String bytesToHexString(byte[] bytes)
 	{  
 		StringBuilder sb = new StringBuilder(bytes.length * 2);  
 		Formatter formatter = new Formatter(sb);  
@@ -17,5 +15,5 @@ public class DWGManageOutput implements DWGManageOutputInterface {
 		}  
 		
 		return sb.toString();  
-	}  
+	}
 }

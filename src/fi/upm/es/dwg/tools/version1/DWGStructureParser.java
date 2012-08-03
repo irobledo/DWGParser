@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fi.upm.es.dwg.tools.interfaces.DWGStructureParserInterface;
+import fi.upm.es.dwg.elements.DWGHeader;
 
 public class DWGStructureParser implements DWGStructureParserInterface {
 	
@@ -33,6 +34,7 @@ public class DWGStructureParser implements DWGStructureParserInterface {
 		log.log(Level.INFO,"Comienza el analisis del header del fichero");
 		DWGBytesReader dwgbytes = new DWGBytesReader();
 		DWGManageOutput dwgout = new DWGManageOutput();
+		DWGHeader dwgh = new DWGHeader();
 
 		try
 		{
@@ -42,7 +44,13 @@ public class DWGStructureParser implements DWGStructureParserInterface {
 			byte [] version_string_2 = new byte[2];
 			version_string_1 = dwgbytes.leer4BytesLittleEndian(in);
 			version_string_2 = dwgbytes.leer2BytesLittleEndian(in);
-			log.log(Level.INFO,"Version string:" + dwgout.bytesToHexString(version_string_1) + dwgout.bytesToHexString(version_string_2));
+			
+			dwgh.setVersionString(StringReturn.S(version_string_1) + StringReturn.S(version_string_2));
+			
+			log.log(Level.INFO,"Version string:" + StringReturn.hexS(version_string_1) + StringReturn.hexS(version_string_2));
+			log.log(Level.INFO,"Version string:" + StringReturn.S(version_string_1) + StringReturn.S(version_string_2));
+			
+			//System.out.println(dwgh.toString());
 			
 			// 5 bytes 00
 			byte [] ceros_1 = new byte[4];
